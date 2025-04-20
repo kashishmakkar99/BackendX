@@ -1,9 +1,15 @@
 package com.bigmakk.concepts.core;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Engine {
     private String companyName;
 
-    public Engine(String companyName) {
+    @Autowired
+    public Engine(@Qualifier("engineBean") String companyName) {
         this.companyName = companyName;
     }
 
@@ -16,6 +22,7 @@ public class Engine {
     }
 
     public Engine() {
+        System.out.println("Engine created using default constructor");
     }
 
     public void start(){
